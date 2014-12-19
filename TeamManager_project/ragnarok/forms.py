@@ -1,5 +1,6 @@
 from django import forms
-from ragnarok.models import Category, Page
+from ragnarok.models import Category, Page, User
+
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128, help_text="Please enter a category name!")
@@ -26,3 +27,18 @@ class PageForm(forms.ModelForm):
     class Meta:
         model = Page
         fields = ('title', 'url', 'views')
+
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('user-navn', 'emajl', 'passvord')
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('website', 'picture')
+
+
